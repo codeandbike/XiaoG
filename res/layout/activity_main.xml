@@ -17,24 +17,36 @@
         android:layout_weight="1" >
     </ListView>
 
-    <LinearLayout
+    
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#666666" >
-
-        <EditText
-            android:id="@+id/Main_Edit_Send"
-            android:layout_width="229dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="top" >
-        </EditText>
-
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/layout_bg1" >
+        
         <Button
-            android:id="@+id/Main_Button_Sand"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="发送" />
-    </LinearLayout>
+        android:id="@+id/Main_Button_Sand"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_centerVertical="true"
+        android:text="发送" />
+         
+        
+        <EditText
+        android:id="@+id/Main_Edit_Send"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@id/Main_Button_Sand"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/edittext1"
+        android:layout_centerVertical="true"
+        android:singleLine="true"
+        android:textSize="18sp"/>
+         
+    </RelativeLayout>
 
 </LinearLayout>

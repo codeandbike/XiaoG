@@ -107,7 +107,7 @@ public class GetHttpServer {
 	 * @return
 	 */
 	private String FilterMsg(String msg) {
-		String FilterS[] = { "微信", "微 信" ,"约炮"};
+		String FilterS[] = { "微信", "微 信" ,"约炮","杨洋"};
 		String mString = "";
 		for (int i = 0; i < FilterS.length; i++) {
 
