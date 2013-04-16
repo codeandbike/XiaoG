@@ -35,7 +35,7 @@ public class GetHttpServer {
 	 * @return
 	 */
 	public boolean SendMsg(String sendString) {
-		String sendData="";
+		String sendData = "";
 		try {
 			sendData = URLEncoder.encode(sendString, "utf-8");
 		} catch (UnsupportedEncodingException e) {
@@ -43,7 +43,8 @@ public class GetHttpServer {
 			e.printStackTrace();
 		}
 
-		path = "http://qqapi.sdapp.cn/simsimi/?Msg="+sendData+"&Type=1&Key=658782";
+		path = "http://qqapi.sdapp.cn/simsimi/?Msg=" + sendData
+				+ "&Type=1&Key=658782";
 		new Thread(runnable).start();
 		return true;
 	}
@@ -68,6 +69,7 @@ public class GetHttpServer {
 				byte[] data = readInputStream(inputStream);
 				html = new String(data);
 
+				html = FilterMsg(html);
 				Intent mIntent = new Intent(ACTION_NAME);
 				mIntent.putExtra("webData", html);
 				// 发送广播
@@ -96,6 +98,28 @@ public class GetHttpServer {
 		inStream.close();
 		// toByteArray()创建一个新分配的 byte 数组。
 		return outStream.toByteArray();
+	}
+
+	/**
+	 * 消息的广告过滤
+	 * 
+	 * @param msg
+	 * @return
+	 */
+	private String FilterMsg(String msg) {
+		String FilterS[] = { "微信", "微 信" ,"约炮"};
+		String mString = "";
+		for (int i = 0; i < FilterS.length; i++) {
+
+			if (msg.indexOf(FilterS[i]) != -1) {
+				mString = "板凳要比板凳长！";
+				break;
+			}
+			mString = msg;
+		}
+		
+		return mString;
+
 	}
 
 }
